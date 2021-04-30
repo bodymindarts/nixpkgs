@@ -26,6 +26,7 @@
     vim-terraform
     vim-nix
     vim-go
+    vim-graphql
     {
       plugin = rust-vim;
       config = "let g:rustfmt_autosave = 1";
