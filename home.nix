@@ -18,6 +18,7 @@ in {
         pkgs.nix-prefetch
         pkgs.bats
         pkgs.ag
+        pkgs.cf
         pkgs.jq
         pkgs.ipcalc
         pkgs.openssh

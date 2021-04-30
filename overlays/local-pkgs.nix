@@ -10,7 +10,7 @@ self: super:
   # vendir = super.callPackage ../pkgs/vendir { };
   kapp = super.callPackage ../pkgs/kapp { };    
   git_duet = super.callPackage ../pkgs/git-duet { };    
-  # cf = super.callPackage ../pkgs/cf { };
+  cf = super.callPackage ../pkgs/cf { };
   spruce = super.callPackage ../pkgs/spruce { };
   safe = super.callPackage ../pkgs/safe { };
   eden = super.callPackage ../pkgs/eden { };
