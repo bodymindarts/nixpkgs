@@ -26,12 +26,10 @@ in {
         pkgs.wget
         pkgs.tree
         pkgs.fly72
-        # pkgs.git_duet
 
         pkgsUnstable.rustup
         pkgs.pkgconfig
         pkgs.postgresql
-        pkgsUnstable.terraform_0_13
         pkgsUnstable.terraformer
         pkgs.vault
 
@@ -60,7 +58,9 @@ in {
       programs.direnv = {
         enable = true;
         enableZshIntegration = true;
-        enableNixDirenvIntegration = true;
+        nix-direnv = {
+          enable = true;
+        };
       };
       programs.ssh = {
         enable = true;
@@ -77,14 +77,20 @@ in {
         enable = true;
         enableZshIntegration = true;
         settings = {
-          add_newline = true;
           scan_timeout = 10;
-          format = "$directory$git_branch$line_break$character";
+          format = "$directory$git_branch$line_break$status$character";
           character = {
-            success_symbol = "[❯](bold #d33682)";
-            error_symbol = "[❯](bold #d33682)";
+            success_symbol = "[\\$](bold #00e600)";
+            error_symbol = "[\\$](bold #d33682)";
           };
-          directory.style	 = "bold #268bd2";
+          directory = {
+            truncation_length = "3";
+            style	 = "bold #268bd2";
+          };
+          status = {
+            disabled = false;
+            format = "[\\($status\\) ](bold #839496)";
+          };
           git_branch = {
             format = "[$branch*]($style) ";
             style = "#839496";

@@ -2,18 +2,7 @@
 {
   enable = true;
   sessionVariables.EDITOR = "vim";
-#   prezto = {
-#     enable = true;
-#     pmodules = [
-#       "syntax-highlighting"
-#       "prompt"
-#       "fasd"
-#       "autosuggestions"
-#       "completion"
-#       "history"
-#     ];
-#     prompt.theme = null;
-#   };
+  sessionVariables.RPROMPT = "";
 
   initExtra =
     ''

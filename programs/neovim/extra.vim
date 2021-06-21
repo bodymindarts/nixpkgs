@@ -38,7 +38,9 @@ set visualbell                     " no beeping
 set wildmenu                       " show menu of complete option
 let mapleader=" "
 let maplocalleader=","
+
 nnoremap <cr> :nohlsearch<cr>
+autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
 
 nnoremap <leader>ev :tabe ~/.config/nixpkgs/programs/neovim/default.nix<cr>
 nnoremap <leader>eh :tabe ~/.config/nixpkgs/home.nix<cr>
