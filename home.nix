@@ -15,6 +15,14 @@ in {
       home.username = "jcarter";
       home.homeDirectory = "/Users/jcarter";
       home.packages = [
+        pkgs.neovim-nightly
+        pkgs.nodejs
+        pkgs.redis
+        pkgs.yarn
+        pkgs.nodePackages.npm
+        pkgs.nodePackages.typescript-language-server
+        pkgs.nodePackages.diagnostic-languageserver
+        pkgs.nodePackages.eslint_d
         pkgs.nix-prefetch
         pkgs.bats
         pkgs.ag
@@ -31,6 +39,7 @@ in {
         pkgs.pkgconfig
         pkgs.postgresql
         pkgsUnstable.terraformer
+        pkgsUnstable.terraform
         pkgs.vault
 
         pkgs.minikube
@@ -51,7 +60,15 @@ in {
         enable = true;
         userName  = "bodymindarts";
         userEmail = "justin@misthos.io";
-        extraConfig = { core = { editor = "vim"; }; "url \"ssh://git@github.com/\"" = { insteadOf = "https://github.com/"; }; credential = { helper = "osxkeychain"; } ; } ;
+        extraConfig = {
+          core = { editor = "vim"; };
+          "url \"ssh://git@github.com/\"" = { insteadOf = "https://github.com/"; };
+          credential = { helper = "osxkeychain"; };
+          alias = {
+            ci = "commit";
+            amend = "commit --amend";
+          };
+        };
         ignores = [ "*~" ];
         lfs.enable = true;
       };
@@ -97,10 +114,6 @@ in {
           };
         };
       };
-      # programs.go = {
-      #   enable = true;
-      #   goPath = "go";
-      # };
       programs.skim = {
         enable = true;
         enableZshIntegration = true;

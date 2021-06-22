@@ -31,6 +31,7 @@
       plugin = rust-vim;
       config = "let g:rustfmt_autosave = 1";
     }
+    nvim-lspconfig
     {
       plugin = LanguageClient-neovim;
       config = "

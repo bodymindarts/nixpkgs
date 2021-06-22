@@ -19,7 +19,10 @@
     let path = ./overlays; in with builtins;
   map (n: import (path + ("/" + n)))
     (filter (n: match ".*\\.nix" n != null )
-     (attrNames (readDir path)));
+    (attrNames (readDir path)))
+    ++ [ (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    })) ];
 
   imports = [ ./home.nix ];
 
