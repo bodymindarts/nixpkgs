@@ -112,6 +112,7 @@ function! RenameFile()
 endfunction
 map <leader>N :call RenameFile()<cr>
 
+" Taken from https://jose-elias-alvarez.medium.com/configuring-neovims-lsp-client-for-typescript-development-5789d58ea9c
 lua << EOF
 local nvim_lsp = require("lspconfig")
 local format_async = function(err, _, result, _, bufnr)
