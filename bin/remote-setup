@@ -1,0 +1,32 @@
+#!/bin/bash
+
+set -e
+
+: ${REMOTE_HOST:?Remote host must be set}
+
+GIT_NAME="Justin Carter"
+
+ssh ${REMOTE_HOST} 'mkdir -p ~/.ssh/'
+scp ~/.ssh/bastion_rsa ${REMOTE_HOST}:~/.ssh/id_rsa
+scp ~/.ssh/bastion_rsa.pub ${REMOTE_HOST}:~/.ssh/id_rsa.pub
+
+ssh ${REMOTE_HOST} <<EOF
+chmod 600 ~/.ssh/id_rsa
+EOF
+
+if [[ "${INSTALL_NIX}" == "yes" ]]; then
+  ssh ${REMOTE_HOST} <<EOF
+sh <(curl -L https://nixos.org/nix/install) --no-daemon
+EOF
+  ssh ${REMOTE_HOST} <<EOF
+export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz home-manager
+nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
+nix-channel --update
+nix-shell '<home-manager>' -A install
+cd ~/.config
+rm -rf nixpkgs
+git clone git@github.com:bodymindarts/nixpkgs.git
+home-manager switch
+EOF
+fi
