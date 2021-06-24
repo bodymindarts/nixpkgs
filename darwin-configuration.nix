@@ -24,7 +24,7 @@
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
     })) ];
 
-  imports = [ ./home.nix ];
+  imports = [ ./darwin-home.nix ];
 
   fonts = {
     enableFontDir = true;
