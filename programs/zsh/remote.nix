@@ -12,11 +12,9 @@
     fi
 
     # Workaround till https://github.com/LnL7/nix-darwin/issues/158 is fixed
-    export NIX_PATH="darwin-config=$HOME/.config/nixpkgs/darwin-configuration.nix:nixpkgs-overlays=$HOME/.config/nixpkgs/overlays:/nix/var/nix/profiles/per-user/root/channels''${NIX_PATH:+:$NIX_PATH}"
+    export NIX_PATH="nixpkgs-overlays=$HOME/.config/nixpkgs/overlays:/nix/var/nix/profiles/per-user/root/channels''${NIX_PATH:+:$NIX_PATH}"
 
     function p() { cd $(find ~/projects -maxdepth 3 -type d | sk) }
-
-    export PATH="''${PATH}:/Users/jcarter/.cargo/bin/"
     '';
 
   shellAliases = {
@@ -33,7 +31,6 @@
     sz = "source ~/.zshrc";
     eh = "vi ~/.config/nixpkgs/home.nix";
 
-    nix-update = "sudo -H nix-channel --update; source ~/.zshrc; nix-channel --update; darwin-rebuild switch; source ~/.zshrc";
-    nix-update-linux = "sudo -H nix-channel --update; source ~/.zshrc; nix-channel --update; home-manager switch; source ~/.zshrc";
+    nix-update = "sudo -H nix-channel --update; source ~/.zshrc; nix-channel --update; home-manager switch; source ~/.zshrc";
   };
 }

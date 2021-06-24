@@ -25,29 +25,10 @@
     vim-unimpaired
     vim-terraform
     vim-nix
-    vim-go
     vim-graphql
     {
       plugin = rust-vim;
       config = "let g:rustfmt_autosave = 1";
-    }
-    {
-      plugin = nvim-lspconfig;
-      config = (builtins.readFile ./lspconfig.vim);
-    }
-    {
-      plugin = LanguageClient-neovim;
-      config = "
-      let g:LanguageClient_autoStart = 1
-
-      set completefunc=LanguageClient#complete
-
-      nnoremap <silent> gd :call LanguageClient_textDocument_definition()<enter>
-
-      let g:LanguageClient_serverCommands = {
-      \\ 'rust': ['rustup', 'run', 'stable', 'rls'],
-      \\ }
-      ";
     }
     {
       plugin = jellybeans-vim;
