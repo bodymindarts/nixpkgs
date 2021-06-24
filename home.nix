@@ -11,13 +11,6 @@ in
   home.homeDirectory = "/home/justin_galoy_io";
   home.packages = [
         pkgs.neovim-nightly
-        pkgs.nodejs
-        pkgs.redis
-        pkgs.yarn
-        pkgs.nodePackages.npm
-        pkgs.nodePackages.typescript-language-server
-        pkgs.nodePackages.diagnostic-languageserver
-        pkgs.nodePackages.eslint_d
         pkgs.nix-prefetch
         pkgs.bats
         pkgs.ag
@@ -29,17 +22,12 @@ in
         pkgs.tree
 
         pkgs.pkgconfig
-        pkgs.postgresql
         pkgsUnstable.terraformer
         pkgsUnstable.terraform
         pkgs.vault
-
-        pkgs.minikube
         pkgs.kubectl
         pkgs.kubernetes-helm
-
         pkgs.google-cloud-sdk
-
         pkgs.kapp
         pkgs.safe
       ];

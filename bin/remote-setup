@@ -12,6 +12,7 @@ scp ~/.ssh/bastion_rsa.pub ${REMOTE_HOST}:~/.ssh/id_rsa.pub
 
 ssh ${REMOTE_HOST} <<EOF
 chmod 600 ~/.ssh/id_rsa
+ssh-keyscan github.com >> ~/.ssh/known_hosts
 EOF
 
 if [[ "${INSTALL_NIX}" == "yes" ]]; then
@@ -19,7 +20,8 @@ if [[ "${INSTALL_NIX}" == "yes" ]]; then
 sh <(curl -L https://nixos.org/nix/install) --no-daemon
 EOF
   ssh ${REMOTE_HOST} <<EOF
-export NIX_PATH=$HOME/.nix-defexpr/channels${NIX_PATH:+:}$NIX_PATH
+set -x
+export NIX_PATH=\$HOME/.nix-defexpr/channels\${NIX_PATH:+:}\$NIX_PATH
 nix-channel --add https://github.com/nix-community/home-manager/archive/release-21.05.tar.gz home-manager
 nix-channel --add https://nixos.org/channels/nixpkgs-unstable nixpkgs-unstable
 nix-channel --update
