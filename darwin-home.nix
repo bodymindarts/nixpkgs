@@ -28,6 +28,7 @@ in {
         pkgs.ag
         pkgs.cf
         pkgs.jq
+        pkgs.ytt
         pkgs.ipcalc
         pkgs.openssh
         pkgs.watch
