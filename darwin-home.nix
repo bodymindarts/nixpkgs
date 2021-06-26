@@ -33,7 +33,7 @@ in {
         pkgs.watch
         pkgs.wget
         pkgs.tree
-        pkgs.fly72
+        pkgs.fly73
 
         pkgsUnstable.rustup
         pkgs.pkgconfig

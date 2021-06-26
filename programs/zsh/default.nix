@@ -31,7 +31,7 @@
 
     ez = "vi ~/.config/nixpkgs/programs/zsh/default.nix";
     sz = "source ~/.zshrc";
-    eh = "vi ~/.config/nixpkgs/home.nix";
+    eh = "vi ~/.config/nixpkgs/darwin-home.nix";
 
     nix-update = "sudo -H nix-channel --update; source ~/.zshrc; nix-channel --update; darwin-rebuild switch; source ~/.zshrc";
     nix-update-linux = "sudo -H nix-channel --update; source ~/.zshrc; nix-channel --update; home-manager switch; source ~/.zshrc";
