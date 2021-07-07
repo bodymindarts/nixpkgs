@@ -37,11 +37,8 @@ in {
         pkgs.fly73
 
         pkgsUnstable.rustup
-        pkgs.pkgconfig
-        pkgs.postgresql
         pkgsUnstable.terraformer
         pkgsUnstable.terraform
-        pkgs.vault
 
         pkgs.minikube
         pkgs.kubectl
@@ -51,22 +48,18 @@ in {
 
         pkgs.kapp
         pkgs.safe
-        pkgs.eden
-        pkgs.genesis
-        pkgs.bosh
-        pkgs.credhub
-        pkgs.spruce
       ];
       programs.git = {
         enable = true;
         userName  = "bodymindarts";
-        userEmail = "justin@misthos.io";
+        userEmail = "justin@galoy.io";
         extraConfig = {
           core = { editor = "vim"; };
           "url \"ssh://git@github.com/\"" = { insteadOf = "https://github.com/"; };
           credential = { helper = "osxkeychain"; };
           alias = {
             ci = "commit";
+            dc = "diff --cached";
             amend = "commit --amend";
           };
         };
