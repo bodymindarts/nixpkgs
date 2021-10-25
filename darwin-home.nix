@@ -16,31 +16,41 @@ in {
       home.homeDirectory = "/Users/jcarter";
       home.packages = [
         pkgs.neovim-nightly
+        pkgs.gnugrep
         pkgs.nodejs
         pkgs.redis
         pkgs.yarn
-        pkgs.nodePackages.npm
-        pkgs.nodePackages.typescript-language-server
-        pkgs.nodePackages.diagnostic-languageserver
-        pkgs.nodePackages.eslint_d
+
+        pkgs.gh
         pkgs.nix-prefetch
         pkgs.bats
         pkgs.ag
         pkgs.cf
         pkgs.jq
+        pkgs.spruce
         pkgs.ytt
+        pkgs.vendir
         pkgs.ipcalc
         pkgs.openssh
         pkgs.watch
+        pkgs.watchman
         pkgs.wget
         pkgs.tree
-        pkgs.fly73
+        pkgs.fly75
+        pkgs.mongodb-tools
+        pkgsUnstable.lnd
+
+        pkgs.nodePackages.npm
+        pkgs.nodePackages.typescript-language-server
+        pkgs.nodePackages.diagnostic-languageserver
+        pkgs.nodePackages.eslint_d
+        pkgs.fastlane
+        pkgs.ruby
 
         pkgsUnstable.rustup
         pkgsUnstable.terraformer
         pkgsUnstable.terraform
 
-        pkgs.minikube
         pkgs.kubectl
         pkgs.kubernetes-helm
 
@@ -54,12 +64,14 @@ in {
         userName  = "bodymindarts";
         userEmail = "justin@galoy.io";
         extraConfig = {
+          init = { defaultBranch = "main"; };
           core = { editor = "vim"; };
-          "url \"ssh://git@github.com/\"" = { insteadOf = "https://github.com/"; };
+          "url \"ssh://git@github.com:\"" = { insteadOf = "https://github.com"; };
           credential = { helper = "osxkeychain"; };
           alias = {
             ci = "commit";
             dc = "diff --cached";
+            b = "branch";
             amend = "commit --amend";
           };
         };

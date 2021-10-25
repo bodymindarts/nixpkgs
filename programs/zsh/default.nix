@@ -3,6 +3,8 @@
   enable = true;
   sessionVariables.EDITOR = "vim";
   sessionVariables.RPROMPT = "";
+  sessionVariables.BASTION_USER = "justin_galoy_io";
+  sessionVariables.CARGO_NET_GIT_FETCH_WITH_CLI = "true";
 
   initExtra =
     ''
@@ -16,7 +18,7 @@
 
     function p() { cd $(find ~/projects -maxdepth 3 -type d | sk) }
 
-    export PATH="''${PATH}:/Users/jcarter/.cargo/bin/"
+    export PATH="''${PATH}:/Users/jcarter/.cargo/bin/:/Users/jcarter/.gem/2.7.0/bin"
     '';
 
   shellAliases = {
@@ -24,6 +26,7 @@
 
     g = "git";
     gs = "git status";
+    gb = "git branch";
     gl = "git log --oneline --graph --decorate --date=relative";
 
     tf = "terraform";
