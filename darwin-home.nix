@@ -3,7 +3,6 @@
 let
 
   pkgsUnstable = import <nixpkgs-unstable> {};
-
 in {
   imports = [ <home-manager/nix-darwin> ];
 
@@ -19,7 +18,9 @@ in {
         pkgs.gnugrep
         pkgs.nodejs-16_x
         pkgs.redis
-        pkgs.yarn
+        (pkgs.yarn.override {
+          nodejs = pkgs.nodejs-16_x;
+        })
 
         pkgs.gh
         pkgs.nix-prefetch
