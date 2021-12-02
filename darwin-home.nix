@@ -17,7 +17,7 @@ in {
       home.packages = [
         pkgs.neovim-nightly
         pkgs.gnugrep
-        pkgs.nodejs
+        pkgs.nodejs-16_x
         pkgs.redis
         pkgs.yarn
 
@@ -27,10 +27,12 @@ in {
         pkgs.ag
         pkgs.cf
         pkgs.jq
+        pkgs.yq
         pkgs.spruce
         pkgs.ytt
         pkgs.vendir
         pkgs.ipcalc
+        pkgs.htop
         pkgs.openssh
         pkgs.watch
         pkgs.watchman
@@ -40,15 +42,12 @@ in {
         pkgs.mongodb-tools
         pkgsUnstable.lnd
 
-        pkgs.nodePackages.npm
         pkgs.nodePackages.typescript-language-server
         pkgs.nodePackages.diagnostic-languageserver
+        pkgs.nodePackages.lerna
         pkgs.nodePackages.eslint_d
-        pkgs.fastlane
-        pkgs.ruby
 
         pkgsUnstable.rustup
-        pkgsUnstable.terraformer
         pkgsUnstable.terraform
 
         pkgs.kubectl

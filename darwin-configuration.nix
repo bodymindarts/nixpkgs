@@ -36,6 +36,7 @@
 # to load darwin-rebuild via /etc/static/zshrc
 # further configuration via home-manager
   programs.zsh.enable = true;
+  programs.zsh.enableCompletion = false;
   services.lorri.enable = true;
 
   users.nix.configureBuildUsers = true;

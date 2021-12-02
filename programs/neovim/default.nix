@@ -1,9 +1,21 @@
 { pkgs }:
-{
+
+let
+  copilot = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-copilot";
+    src = pkgs.fetchFromGitHub {
+      owner = "github";
+      repo = "copilot.vim";
+      rev = "6149088454abb0e3e4a49c76a4f3fac7f0154e5a";
+      sha256 = "sha256-Hm7nHn803ahgthxjLNi+5ra/vyDiM7ZPi2CifIfmaUM=";
+    };
+  };
+in {
   enable = true;
   viAlias = true;
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
+    copilot
     {
       plugin = ctrlp-vim;
       config = "

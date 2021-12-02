@@ -18,7 +18,7 @@
 
     function p() { cd $(find ~/projects -maxdepth 3 -type d | sk) }
 
-    export PATH="''${PATH}:/Users/jcarter/.cargo/bin/:/Users/jcarter/.gem/2.7.0/bin"
+    export PATH="''${PATH}:/Users/jcarter/.cargo/bin/"
     '';
 
   shellAliases = {
