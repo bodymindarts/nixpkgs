@@ -14,7 +14,6 @@ in {
       home.username = "jcarter";
       home.homeDirectory = "/Users/jcarter";
       home.packages = [
-        pkgs.neovim-nightly
         pkgs.gnugrep
         pkgs.nodejs-16_x
         pkgs.redis
@@ -26,10 +25,8 @@ in {
         pkgs.nix-prefetch
         pkgs.bats
         pkgs.ag
-        pkgs.cf
         pkgs.jq
         pkgs.yq
-        pkgs.spruce
         pkgs.ytt
         pkgs.vendir
         pkgs.ipcalc
@@ -39,8 +36,9 @@ in {
         pkgs.watchman
         pkgs.wget
         pkgs.tree
-        pkgs.fly75
+        pkgs.fly76
         pkgs.mongodb-tools
+        pkgs.postgresql
         pkgsUnstable.lnd
 
         pkgs.nodePackages.typescript-language-server
@@ -49,6 +47,7 @@ in {
         pkgs.nodePackages.eslint_d
 
         pkgsUnstable.rustup
+        pkgsUnstable.rust-analyzer
         pkgsUnstable.terraform
 
         pkgs.kubectl

@@ -5,6 +5,7 @@ self: super:
   # leftovers = super.callPackage ../pkgs/leftovers { };
   bosh = super.callPackage ../pkgs/bosh { };
   credhub = super.callPackage ../pkgs/credhub { };
+  vim-copilot = super.callPackage ../pkgs/vim-copilot { };
   # boshBootloader = super.callPackage ../pkgs/bosh-bootloader { };
   # ytt = super.callPackage ../pkgs/ytt { };
   # vendir = super.callPackage ../pkgs/vendir { };

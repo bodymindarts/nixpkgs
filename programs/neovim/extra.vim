@@ -20,7 +20,6 @@ set nofoldenable                   " no automatic folding
 set noswapfile                     " no backups, no swapfiles
 set nowritebackup                  " no backups, no swapfiles
 set number                         " line number
-set runtimepath+=~/.vim/xpt-personal
 set shiftwidth=2
 set showtabline=2                  " always have tab line
 set smartcase                      " search is case sensitive when word starts with uppercase
@@ -41,8 +40,15 @@ let g:vimsyn_embed = 'l'
 let mapleader=" "
 let maplocalleader=","
 
-nnoremap <cr> :nohlsearch<cr>
-autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+augroup vimrc
+  autocmd!
+  autocmd BufReadPost quickfix nnoremap <buffer> <CR> <CR>
+  autocmd FileType typescript autocmd BufWritePre <buffer> :ALEFix
+  autocmd BufReadPost *
+        \ if line("'\"") > 0 && line("'\"") <= line("$") |
+        \ exe "normal g`\"" |
+        \ endif
+augroup end
 
 nnoremap <leader>ev :tabe ~/.config/nixpkgs/programs/neovim/default.nix<cr>
 nnoremap <leader>eh :tabe ~/.config/nixpkgs/darwin-home.nix<cr>

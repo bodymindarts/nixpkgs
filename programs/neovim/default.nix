@@ -1,6 +1,15 @@
 { pkgs }:
 
 let
+  ale = pkgs.vimUtils.buildVimPlugin {
+    name = "vim-ale";
+    src = pkgs.fetchFromGitHub {
+      owner = "dense-analysis";
+      repo = "ale";
+      rev = "388cf3374312b05122151bc68691bf09a69ff840";
+      sha256 = "sha256-d3Ce2V90dn5ce2NCqaH3ZqXdgmKBrkKTSHmMwd1q7ss=";
+    };
+  };
   copilot = pkgs.vimUtils.buildVimPlugin {
     name = "vim-copilot";
     src = pkgs.fetchFromGitHub {
@@ -16,6 +25,20 @@ in {
   vimAlias = true;
   plugins = with pkgs.vimPlugins; [
     copilot
+    { plugin = ale;
+      config = "
+        let g:ale_linters = {'javascript': [], 'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint'], 'rust': ['rls'] }
+        let g:ale_fixers = {'javascript': [], 'typescript': ['prettier'], 'typescript.tsx': ['prettier'], 'rust': ['rustfmt'] }
+        let g:ale_lint_on_text_changed = 'normal'
+        let g:ale_lint_on_insert_leave = 1
+        let g:ale_lint_delay = 0
+        let g:ale_set_quickfix = 0
+        let g:ale_set_loclist = 0
+        let g:ale_javascript_eslint_executable = 'eslint --cache'
+
+        nnoremap <silent> gd :ALEGoToDefinition<enter>
+      ";
+    }
     {
       plugin = ctrlp-vim;
       config = "
@@ -39,27 +62,16 @@ in {
     vim-nix
     vim-go
     vim-graphql
+    typescript-vim
+    vim-cool
+    vim-jsx-pretty
+    {
+      plugin = tsuquyomi;
+      config = "let g:tsuquyomi_disable_quickfix = 1";
+    }
     {
       plugin = rust-vim;
       config = "let g:rustfmt_autosave = 1";
-    }
-    {
-      plugin = nvim-lspconfig;
-      config = (builtins.readFile ./lspconfig.vim);
-    }
-    {
-      plugin = LanguageClient-neovim;
-      config = "
-      let g:LanguageClient_autoStart = 1
-
-      set completefunc=LanguageClient#complete
-
-      nnoremap <silent> gd :call LanguageClient_textDocument_definition()<enter>
-
-      let g:LanguageClient_serverCommands = {
-      \\ 'rust': ['rustup', 'run', 'stable', 'rls'],
-      \\ }
-      ";
     }
     {
       plugin = jellybeans-vim;
