@@ -23,8 +23,9 @@ in {
 
         pkgs.gh
         pkgs.nix-prefetch
+        pkgs.grpcurl
         pkgs.bats
-        pkgs.ag
+        pkgs.silver-searcher
         pkgs.jq
         pkgs.yq
         pkgs.ytt
@@ -39,6 +40,7 @@ in {
         pkgs.fly76
         pkgs.mongodb-tools
         pkgs.postgresql
+        pkgs.bitcoin
         pkgsUnstable.lnd
 
         pkgs.nodePackages.typescript-language-server
@@ -49,6 +51,7 @@ in {
         pkgsUnstable.rustup
         pkgsUnstable.rust-analyzer
         pkgsUnstable.terraform
+        pkgs.envsubst
 
         pkgs.kubectl
         pkgs.kubernetes-helm

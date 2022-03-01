@@ -50,6 +50,7 @@ augroup vimrc
         \ endif
 augroup end
 
+nnoremap <leader>r :ALERename<cr>
 nnoremap <leader>ev :tabe ~/.config/nixpkgs/programs/neovim/default.nix<cr>
 nnoremap <leader>eh :tabe ~/.config/nixpkgs/darwin-home.nix<cr>
 nnoremap <leader>sv :source $MYVIMRC<cr>
