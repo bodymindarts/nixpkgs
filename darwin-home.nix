@@ -37,7 +37,7 @@ in {
         pkgs.watchman
         pkgs.wget
         pkgs.tree
-        pkgs.fly76
+        pkgs.fly77
         pkgs.mongodb-tools
         pkgs.postgresql
         pkgs.bitcoin
