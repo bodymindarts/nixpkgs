@@ -14,7 +14,7 @@ in {
       home.username = "jcarter";
       home.homeDirectory = "/Users/jcarter";
       home.packages = [
-        pkgs.gnugrep
+        pkgs.vault
         pkgs.nodejs-16_x
         pkgs.redis
         (pkgs.yarn.override {
@@ -40,8 +40,11 @@ in {
         pkgs.fly77
         pkgs.mongodb-tools
         pkgs.postgresql
+        pkgs.gnugrep
+        pkgs.uutils-coreutils
         pkgs.bitcoin
         pkgsUnstable.lnd
+        pkgs.jupyter
 
         pkgs.nodePackages.typescript-language-server
         pkgs.nodePackages.diagnostic-languageserver
@@ -49,6 +52,8 @@ in {
         pkgs.nodePackages.eslint_d
 
         pkgsUnstable.rustup
+        pkgsUnstable.sqlx-cli
+        pkgs.flatbuffers
         pkgsUnstable.rust-analyzer
         pkgsUnstable.terraform
         pkgs.envsubst

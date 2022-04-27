@@ -10,7 +10,7 @@
       error_symbol = "[\\$](bold #d33682)";
     };
     directory = {
-      truncation_length = "3";
+      truncation_length = 3;
       style	 = "bold #268bd2";
     };
     status = {

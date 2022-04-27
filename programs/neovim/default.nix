@@ -28,6 +28,7 @@ in {
     { plugin = ale;
       config = "
         let g:ale_completion_enabled = 1
+        let g:ale_completion_autoimport = 1
         let g:ale_linters = {'javascript': [], 'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint'], 'rust': ['analyzer'] }
         let g:ale_fixers = {'javascript': [], 'typescript': ['prettier'], 'typescript.tsx': ['prettier'], 'rust': ['rustfmt'] }
         let g:ale_lint_on_text_changed = 'normal'
@@ -54,6 +55,7 @@ in {
       plugin = ack-vim;
       config = "let g:ackprg = 'ag --nogroup --nocolor --column'";
     }
+    vim-flatbuffers
     vim-commentary
     vim-surround
     vim-repeat
