@@ -14,6 +14,11 @@ in {
       home.username = "jcarter";
       home.homeDirectory = "/Users/jcarter";
       home.packages = [
+        pkgs.httrack
+
+        pkgs.cmake
+        pkgs.gnupg
+
         pkgs.vault
         pkgs.nodejs-16_x
         pkgs.redis
@@ -22,12 +27,14 @@ in {
         })
 
         pkgs.gh
+        pkgs.hub
+        pkgs.sshuttle
         pkgs.nix-prefetch
         pkgs.grpcurl
         pkgs.bats
         pkgs.silver-searcher
         pkgs.jq
-        pkgs.yq
+        pkgs.yq-go
         pkgs.ytt
         pkgs.vendir
         pkgs.ipcalc
@@ -37,23 +44,19 @@ in {
         pkgs.watchman
         pkgs.wget
         pkgs.tree
-        pkgs.fly77
+        pkgs.fly90
         pkgs.mongodb-tools
         pkgs.postgresql
         pkgs.gnugrep
         pkgs.uutils-coreutils
-        pkgs.bitcoin
         pkgsUnstable.lnd
-        pkgs.jupyter
 
         pkgs.nodePackages.typescript-language-server
         pkgs.nodePackages.diagnostic-languageserver
-        pkgs.nodePackages.lerna
         pkgs.nodePackages.eslint_d
 
         pkgsUnstable.rustup
         pkgsUnstable.sqlx-cli
-        pkgs.flatbuffers
         pkgsUnstable.rust-analyzer
         pkgsUnstable.terraform
         pkgs.envsubst
@@ -63,8 +66,6 @@ in {
 
         pkgs.google-cloud-sdk
 
-        pkgs.kapp
-        pkgs.safe
       ];
       programs.git = {
         enable = true;
@@ -74,6 +75,8 @@ in {
           init = { defaultBranch = "main"; };
           core = { editor = "vim"; };
           "url \"ssh://git@github.com:\"" = { insteadOf = "https://github.com"; };
+          "url \"https://github.com/rust-lang/crates.io-index\"" = { insteadOf = "https://github.com/rust-lang/crates.io-index"; };
+          "url \"https://github.com/RustSec/advisory-db\"" = { insteadOf = "https://github.com/RustSec/advisory-db"; };
           credential = { helper = "osxkeychain"; };
           alias = {
             ci = "commit";
@@ -96,12 +99,6 @@ in {
         enable = true;
         compression = true;
         forwardAgent = false;
-        matchBlocks = {
-          "control-plane" = {
-            hostname = "35.198.79.44";
-            user = "justin_misthos_io";
-          };
-        };
       };
       programs.starship = import ./programs/starship/default.nix { };
       programs.skim = {
@@ -111,7 +108,7 @@ in {
       programs.zsh = import ./programs/zsh/default.nix { config = config; };
       programs.tmux = import ./programs/tmux/default.nix { pkgs = pkgs; };
       programs.neovim = import ./programs/neovim/default.nix { pkgs = pkgs; };
-      home.stateVersion = "21.03";
+      home.stateVersion = "22.05";
     };
   };
 }

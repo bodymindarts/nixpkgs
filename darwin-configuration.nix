@@ -27,7 +27,7 @@
   imports = [ ./darwin-home.nix ];
 
   fonts = {
-    enableFontDir = true;
+    fontDir.enable = true;
     fonts = [
       pkgs.hack-font
     ];

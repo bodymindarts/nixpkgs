@@ -1,6 +1,7 @@
 { pkgs }:
 
 let
+  pkgsUnstable = import <nixpkgs-unstable> {};
   ale = pkgs.vimUtils.buildVimPlugin {
     name = "vim-ale";
     src = pkgs.fetchFromGitHub {
@@ -15,14 +16,15 @@ let
     src = pkgs.fetchFromGitHub {
       owner = "github";
       repo = "copilot.vim";
-      rev = "6149088454abb0e3e4a49c76a4f3fac7f0154e5a";
-      sha256 = "sha256-Hm7nHn803ahgthxjLNi+5ra/vyDiM7ZPi2CifIfmaUM=";
+      rev = "c2e75a3a7519c126c6fdb35984976df9ae13f564";
+      sha256 = "sha256-V13La54aIb3hQNDE7BmOIIZWy7In5cG6kE0fti/wxVQ=";
     };
   };
 in {
   enable = true;
   viAlias = true;
   vimAlias = true;
+  # package = pkgsUnstable.neovim;
   plugins = with pkgs.vimPlugins; [
     copilot
     { plugin = ale;
@@ -30,7 +32,7 @@ in {
         let g:ale_completion_enabled = 1
         let g:ale_completion_autoimport = 1
         let g:ale_linters = {'javascript': [], 'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint'], 'rust': ['analyzer'] }
-        let g:ale_fixers = {'javascript': [], 'typescript': ['prettier'], 'typescript.tsx': ['prettier'], 'rust': ['rustfmt'] }
+        let g:ale_fixers = {'javascript': [], 'typescript': ['eslint'], 'typescript.tsx': ['eslint'], 'rust': ['rustfmt'] }
         let g:ale_lint_on_text_changed = 'normal'
         let g:ale_lint_on_insert_leave = 1
         let g:ale_lint_delay = 0
@@ -44,18 +46,19 @@ in {
     {
       plugin = ctrlp-vim;
       config = "
-      let g:ctrlp_user_command = 'ag %s -l -f --nocolor -g \"\"'
-      let g:ctrlp_show_hidden = 0
-      let g:ctrlp_use_caching = 0
-      let g:ctrlp_switch_buffer = 'e'
-      let g:ctrlp_root_markers = ['tags', '.tags']
+        let g:ctrlp_user_command = 'ag %s -l -f --nocolor -g \"\"'
+        let g:ctrlp_show_hidden = 0
+        let g:ctrlp_use_caching = 0
+        let g:ctrlp_switch_buffer = 'e'
+        let g:ctrlp_root_markers = ['tags', '.tags']
       ";
     }
     {
       plugin = ack-vim;
-      config = "let g:ackprg = 'ag --nogroup --nocolor --column'";
+      config = "
+        let g:ackprg = 'ag --nogroup --nocolor --column'
+      ";
     }
-    vim-flatbuffers
     vim-commentary
     vim-surround
     vim-repeat
@@ -70,15 +73,27 @@ in {
     vim-jsx-pretty
     {
       plugin = tsuquyomi;
-      config = "let g:tsuquyomi_disable_quickfix = 1";
+      config = "
+        let g:tsuquyomi_disable_quickfix = 1
+      ";
     }
     {
       plugin = rust-vim;
-      config = "let g:rustfmt_autosave = 1";
+      config = "
+        let g:rustfmt_autosave = 1
+      ";
+    }
+    {
+      plugin = pgsql-vim;
+      config = "
+        let g:sql_type_default = 'pgsql'
+      ";
     }
     {
       plugin = jellybeans-vim;
-      config = "let g:jellybeans_overrides = { 'Special': { 'guifg': 'de5577' }, }";
+      config = "
+        let g:jellybeans_overrides = { 'Special': { 'guifg': 'de5577' }, }
+      ";
     }
   ];
   extraConfig = (builtins.readFile ./extra.vim);
