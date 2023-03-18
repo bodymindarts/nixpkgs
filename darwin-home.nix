@@ -20,11 +20,10 @@ in {
         pkgs.gnupg
 
         pkgs.vault
-        pkgs.nodejs-16_x
+        pkgs.nodenv
+        pkgs.nodejs-18_x
         pkgs.redis
-        (pkgs.yarn.override {
-          nodejs = pkgs.nodejs-16_x;
-        })
+        pkgs.yarn
 
         pkgs.gh
         pkgs.hub
@@ -44,7 +43,7 @@ in {
         pkgs.watchman
         pkgs.wget
         pkgs.tree
-        pkgs.fly90
+        pkgs.fly91
         pkgs.mongodb-tools
         pkgs.postgresql
         pkgs.gnugrep

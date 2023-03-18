@@ -26,7 +26,11 @@ in {
   vimAlias = true;
   # package = pkgsUnstable.neovim;
   plugins = with pkgs.vimPlugins; [
-    copilot
+    { plugin = copilot;
+      config = "
+        let g:copilot_node_command = \"~/.nodenv/versions/16.19.1/bin/node\"
+      ";
+    }
     { plugin = ale;
       config = "
         let g:ale_completion_enabled = 1
