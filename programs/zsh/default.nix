@@ -17,6 +17,8 @@
     export NIX_PATH="darwin-config=$HOME/.config/nixpkgs/darwin-configuration.nix:nixpkgs-overlays=$HOME/.config/nixpkgs/overlays:/nix/var/nix/profiles/per-user/root/channels''${NIX_PATH:+:$NIX_PATH}"
 
     function p() { cd $(find ~/projects -maxdepth 3 -type d | sk) }
+    source "$HOME/.config/nixpkgs/programs/zsh/gpt_files.zsh"
+    function gp() { gpt_files $@ | pbcopy }
 
     export PATH="''${PATH}:/Users/jcarter/.cargo/bin/"
     '';

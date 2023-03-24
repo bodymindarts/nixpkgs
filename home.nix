@@ -4,6 +4,7 @@ let
 in
 {
   programs.home-manager.enable = true;
+  experimental-features = nix-command;
   home.username = "justin_galoy_io";
   home.homeDirectory = "/home/justin_galoy_io";
   home.packages = [

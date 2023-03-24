@@ -60,6 +60,8 @@ in {
         pkgsUnstable.terraform
         pkgs.envsubst
 
+        pkgs.go
+
         pkgs.kubectl
         pkgs.kubernetes-helm
 
