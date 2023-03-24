@@ -1,3 +1,20 @@
+# gpt_files.zsh
+#
+# This script contains a function called `gpt_files`, which helps provide
+# file context when working with ChatGPT in an efficient manner. The function
+# accepts one or more file paths, globs, or directories as arguments and prints
+# the content of the specified files in a structured format. This output can
+# be easily piped to clipboard utilities like `pbcopy` and then pasted into
+# the ChatGPT prompt to provide context for questions.
+#
+# Usage:
+#   gpt_files file1 [file2 ...]       - Prints the content of the specified files
+#   gpt_files glob1 [glob2 ...]       - Prints the content of files matching the specified globs
+#   gpt_files dir1 [dir2 ...]         - Prints the content of files in the specified directories
+#
+# Example usage with clipboard utility:
+#   gpt_files some_file.txt | pbcopy  - Copies the output to clipboard for pasting into ChatGPT
+#
 function gpt_files() {
   if [ $# -eq 0 ]; then
     echo "Usage: gpt_files glob_or_dir1 [glob_or_dir2 ...]"
