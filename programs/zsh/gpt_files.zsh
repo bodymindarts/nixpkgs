@@ -17,7 +17,7 @@
 #
 MAX_TOKENS=4096  # Set the maximum number of tokens allowed
 
-function gpt_files() {
+function gpf() {
   if [ $# -eq 0 ]; then
     echo "Usage: gpt_files glob_or_dir1 [glob_or_dir2 ...]"
     return 1
@@ -51,36 +51,38 @@ function gpt_files() {
 
 
   local total_tokens=0
+  local files=()
   local file_tokens
-  local file_token_counts=()
 
   for input in "$@"
   do
+    local found_files=()
+
     if is_git_repo; then
       if [ -d "$input" ]; then
-        files=( $(git_files "$input") )
+        found_files=( $(git_files "$input") )
       else
-        files=( $(git_files $input) )
+        found_files=( $(git_files $input) )
       fi
     else
       if [ -d "$input" ]; then
-        files=( $(regular_files "$input") )
+        found_files=( $(regular_files "$input") )
       else
-        files=( $(regular_files $input) )
+        found_files=( $(regular_files $input) )
       fi
     fi
 
-    if [ ${#files[@]} -eq 0 ]; then
+    if [ ${#found_files[@]} -eq 0 ]; then
       echo "Error: No files match input '$input'."
       continue
     fi
 
-    for file in "${files[@]}"
+    for file in "${found_files[@]}"
     do
       if [ -f "$file" ]; then
         file_tokens=$(wc -w < "$file")
         total_tokens=$((total_tokens + file_tokens))
-        file_token_counts+=("$file:$file_tokens")
+        files+=("$file")
       else
         echo "Error: $file is not a file."
       fi

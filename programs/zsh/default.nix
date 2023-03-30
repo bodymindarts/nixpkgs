@@ -18,7 +18,7 @@
 
     function p() { cd $(find ~/projects -maxdepth 3 -type d | sk) }
     source "$HOME/.config/nixpkgs/programs/zsh/gpt_files.zsh"
-    function gp() { gpt_files $@ | pbcopy }
+    function gpc() { gpf $@ | pbcopy }
 
     export PATH="''${PATH}:/Users/jcarter/.cargo/bin/"
     '';

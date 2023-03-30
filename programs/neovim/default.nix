@@ -63,6 +63,7 @@ in {
         let g:ackprg = 'ag --nogroup --nocolor --column'
       ";
     }
+    bats-vim
     vim-commentary
     vim-surround
     vim-repeat

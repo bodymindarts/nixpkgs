@@ -78,7 +78,9 @@ in {
           "url \"ssh://git@github.com:\"" = { insteadOf = "https://github.com"; };
           "url \"https://github.com/rust-lang/crates.io-index\"" = { insteadOf = "https://github.com/rust-lang/crates.io-index"; };
           "url \"https://github.com/RustSec/advisory-db\"" = { insteadOf = "https://github.com/RustSec/advisory-db"; };
-          credential = { helper = "osxkeychain"; };
+          credential = {
+            helper = "osxkeychain";
+          };
           alias = {
             ci = "commit";
             dc = "diff --cached";
