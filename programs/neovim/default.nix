@@ -2,15 +2,6 @@
 
 let
   pkgsUnstable = import <nixpkgs-unstable> {};
-  ale = pkgs.vimUtils.buildVimPlugin {
-    name = "vim-ale";
-    src = pkgs.fetchFromGitHub {
-      owner = "dense-analysis";
-      repo = "ale";
-      rev = "388cf3374312b05122151bc68691bf09a69ff840";
-      sha256 = "sha256-d3Ce2V90dn5ce2NCqaH3ZqXdgmKBrkKTSHmMwd1q7ss=";
-    };
-  };
 in {
   enable = true;
   viAlias = true;
