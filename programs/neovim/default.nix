@@ -11,22 +11,13 @@ let
       sha256 = "sha256-d3Ce2V90dn5ce2NCqaH3ZqXdgmKBrkKTSHmMwd1q7ss=";
     };
   };
-  copilot = pkgs.vimUtils.buildVimPlugin {
-    name = "vim-copilot";
-    src = pkgs.fetchFromGitHub {
-      owner = "github";
-      repo = "copilot.vim";
-      rev = "c2e75a3a7519c126c6fdb35984976df9ae13f564";
-      sha256 = "sha256-V13La54aIb3hQNDE7BmOIIZWy7In5cG6kE0fti/wxVQ=";
-    };
-  };
 in {
   enable = true;
   viAlias = true;
   vimAlias = true;
   # package = pkgsUnstable.neovim;
   plugins = with pkgs.vimPlugins; [
-    { plugin = copilot;
+    { plugin = copilot-vim;
       config = "
         let g:copilot_node_command = \"~/.nodenv/versions/16.19.1/bin/node\"
       ";
