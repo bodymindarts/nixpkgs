@@ -19,14 +19,7 @@ in {
         pkgs.cmake
         pkgs.gnupg
 
-        pkgs.vault
-        pkgs.nodenv
-        pkgs.nodejs-18_x
-        pkgs.redis
-        pkgs.yarn
-
         pkgs.gh
-        pkgs.hub
         pkgs.sshuttle
         pkgs.nix-prefetch
         pkgs.grpcurl
@@ -59,8 +52,6 @@ in {
         pkgsUnstable.rust-analyzer
         pkgsUnstable.terraform
         pkgs.envsubst
-
-        pkgs.go
 
         pkgs.kubectl
         pkgs.kubernetes-helm

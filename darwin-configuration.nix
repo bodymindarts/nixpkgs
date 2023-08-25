@@ -39,7 +39,7 @@
   programs.zsh.enable = true;
   programs.zsh.enableCompletion = false;
 
-  users.nix.configureBuildUsers = true;
+  nix.configureBuildUsers = true;
   users.users.jcarter = {
       home = "/Users/jcarter" ;
       shell = pkgs.zsh;

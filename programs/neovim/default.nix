@@ -6,7 +6,7 @@ in {
   enable = true;
   viAlias = true;
   vimAlias = true;
-  # package = pkgsUnstable.neovim;
+  # package = pkgs.neovim;
   plugins = with pkgs.vimPlugins; [
     { plugin = copilot-vim;
       config = "
